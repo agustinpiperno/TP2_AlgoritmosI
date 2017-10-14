@@ -48,7 +48,7 @@ status_t leer_linea(FILE *fentrada, int *cant_lineas, char **linea,char *c)
 	}
 	lineaBuffer[count] = '\0';
 
-	if((*linea = (char *)malloc(sizeof(char)*count + 1)) == NULL)
+	if((*linea = (char *)malloc(sizeof(char)*count + 1)) == NULL) /* aca count + 1 no va entre parentesis? */
 	{
 		free(lineaBuffer);
 		lineaBuffer = NULL;
