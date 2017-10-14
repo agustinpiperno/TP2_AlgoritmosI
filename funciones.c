@@ -199,7 +199,7 @@ status_t cargar_datos(juego_t *ptr_juego,char **arreglo, size_t l)
 	return ST_OK;
 }
 
-void copy_bin_to_csv(char* entrada, char* salida)
+status_t copy_bin_to_csv(char* entrada, char* salida)
 {
     FILE *fentrada, *fsalida;
     juego_t juego;
