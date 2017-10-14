@@ -228,3 +228,24 @@ status_t copy_bin_to_csv(char* entrada, char* salida)
     
     return ST_OK;                                      
 }
+
+status_t validar_argumentos_deco_base(int argc, char *argv[], FILE **fentrada)
+{
+	if( !argv || !fentrada)
+	{
+		printf("entre a ST_ERROR_PUNTERO_NULO\n");
+		return ST_ERROR_PUNTERO_NULO;
+	}
+	if(argc != MAX_ARGC_DECO_BASE)
+	{
+		printf("entre a ST_ERROR_CANT_ARG\n");
+		return ST_ERROR_CANT_ARG;
+	}
+	if((*fentrada = fopen(argv[1],"rt"))==NULL)
+	{
+		printf("entre a ST_ERROR_APERTURA_ARCHIVO\n");
+		return ST_ERROR_APERTURA_ARCHIVO;
+	}
+	return ST_OK;
+}
+
