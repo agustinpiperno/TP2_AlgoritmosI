@@ -198,3 +198,33 @@ status_t cargar_datos(juego_t *ptr_juego,char **arreglo, size_t l)
 
 	return ST_OK;
 }
+
+void copy_bin_to_csv(char* entrada, char* salida)
+{
+    FILE *fentrada, *fsalida;
+    juego_t juego;
+
+    if ((fentrada = fopen(entrada,"rb")) == NULL)
+    {
+        return ST_ERROR_APERTURA_ARCHIVO;                                   
+    }
+
+    if ((fsalida = fopen(salida,"wt")) == NULL)
+    {    
+        fclose(entrada);
+        return ST_ERROR_APERTURA_ARCHIVO;                                  
+    }
+
+	fprintf(fsalida,"Estructura:\nID: %lu \nNOMBRE: %s\nDESARROLLADOR: %s\nPLATAFORMA: %s\nFECHA: %lu\nPUNTAJE: %f\nRESENIAS: %lu\n", juego.id, juego.nombre, juego.desarrollador, juego.plataforma, juego.fecha, juego.puntaje, juego.resenias);
+   
+    while(fread(&juego, sizeof(juego), 1, fsalida) != EOF)
+    {
+    	fprintf(fsalida, "%lu,%s\n,%s\n,%s\n,%lu\n,%f\n,%lu\n", juego.id, juego.nombre, juego.desarrollador, juego.plataforma, juego.fecha, juego.puntaje, juego.resenias);
+    }     
+
+    fclose(fsalida);
+
+    fclose(fentrada);
+    
+    return ST_OK;                                      
+}
