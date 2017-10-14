@@ -11,5 +11,6 @@ status_t cargar_datos(juego_t *ptr_juego,char **arreglo, size_t l);
 
 
 status_t validar_argumentos(int argc, char *argv[], FILE **fentrada);
+status_t validar_argumentos_deco_base(int argc, char *argv[], FILE **fentrada);
 status_t leer_linea(FILE *fentrada, int *cant_lineas, char **linea,char *c);
 /**********************************************************************************/
